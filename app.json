@@ -1,13 +1,17 @@
 {
   "expo": {
-    "name": "Connections Game",
-    "slug": "connections-game",
+    "name": "Derivation Dash",
+    "slug": "derivation-dash",
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "assetBundlePatterns": [
       "**/*"
     ],
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
     "ios": {
       "supportsTablet": true
     },

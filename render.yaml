@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: derivation-dash
+    env: node
+    buildCommand: npm install && npm run build:web
+    startCommand: npm run serve
+    envVars:
+      - key: NODE_ENV
+        value: production
+

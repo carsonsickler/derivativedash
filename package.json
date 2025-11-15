@@ -6,7 +6,10 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "build:web": "npx expo export --platform web",
+    "serve": "node server.js",
+    "deploy": "npm run build:web && npm run serve"
   },
   "dependencies": {
     "@expo/metro-runtime": "~3.1.1",
@@ -15,10 +18,14 @@
     "react": "18.2.0",
     "react-dom": "^18.2.0",
     "react-native": "^0.73.6",
-    "react-native-web": "~0.19.13"
+    "react-native-web": "~0.19.13",
+    "express": "^4.18.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   },
   "private": true
 }
