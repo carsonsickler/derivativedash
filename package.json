@@ -1,32 +1,21 @@
 {
-  "name": "connections-game",
+  "name": "derivation-dash",
   "version": "1.0.0",
-  "main": "server.js",
+  "private": true,
   "scripts": {
-    "start": "node server.js",
-    "dev": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "build:web": "npx expo export --platform web",
-    "serve": "node server.js",
-    "deploy": "npm run build:web && npm run serve"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@expo/metro-runtime": "~3.1.1",
-    "expo": "~50.0.0",
-    "expo-status-bar": "~1.11.1",
-    "react": "18.2.0",
-    "react-dom": "^18.2.0",
-    "react-native": "^0.73.6",
-    "react-native-web": "~0.19.13",
-    "express": "^4.18.2"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.4.2"
   },
   "engines": {
-    "node": ">=14.0.0"
-  },
-  "private": true
+    "node": ">=18.0.0"
+  }
 }

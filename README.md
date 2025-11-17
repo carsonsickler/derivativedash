@@ -1,6 +1,6 @@
-# Derivation Dash
+# Derivation Dash (Web)
 
-A React Native word formation game where players complete word families by deriving Noun, Verb, Adjective, and Adverb from a single root word. Designed for FCE/CAE exam preparation.
+Derivation Dash is a web-based word formation game inspired by the Cambridge FCE/CAE exam. Complete word families by providing the noun, verb, adjective, and adverb derived from a single root.
 
 ## Features
 
@@ -15,45 +15,44 @@ A React Native word formation game where players complete word families by deriv
 - Round-based gameplay with scoring
 - Hint system
 
+## Tech Stack
+
+- [React 18](https://react.dev/)
+- [Vite](https://vitejs.dev/) for fast development and builds
+- Pure CSS (no UI frameworks)
+
 ## Getting Started
 
-### Prerequisites
-
-- Node.js (v14 or later)
-- npm or yarn
-- Expo CLI (optional, but recommended)
-
-### Installation
-
-1. Install dependencies:
 ```bash
+# Install dependencies
 npm install
-```
 
-2. Start the development server:
-```bash
-npm start
-```
+# Start dev server (http://localhost:5173)
+npm run dev
 
-3. Run on your preferred platform:
-- Press `w` for web
-- Press `i` for iOS simulator
-- Press `a` for Android emulator
-- Scan QR code with Expo Go app on your phone
+# Production build
+npm run build
+
+# Preview production build locally
+npm run preview
+```
 
 ## Project Structure
 
 ```
-games/
-├── App.js                      # Main app component
-├── components/
-│   ├── GameBoard.js           # Main game logic and board
-│   └── WordInputCell.js       # Input cell with feedback
-├── data/
-│   └── wordFamilies.js        # Word families by difficulty level
+/
+├── src/
+│   ├── App.jsx
+│   ├── components/
+│   │   ├── GameBoard.jsx
+│   │   └── WordInputCell.jsx
+│   ├── data/
+│   │   └── wordFamilies.js
+│   ├── main.jsx
+│   └── styles.css
 ├── package.json
-├── app.json                   # Expo configuration
-└── README.md
+├── vite.config.js
+└── render.yaml                # (optional) Render static hosting config
 ```
 
 ## How to Play
@@ -85,7 +84,7 @@ games/
 
 ## Customization
 
-To add your own word families, edit `data/wordFamilies.js`:
+Add or modify word families in `src/data/wordFamilies.js`:
 
 ```javascript
 {
@@ -98,6 +97,14 @@ To add your own word families, edit `data/wordFamilies.js`:
   requiresPrefix: 'adjective' // For Level 3
 }
 ```
+
+## Deploying to Render
+
+Use the included `render.yaml` or set:
+
+- **Service type:** Static
+- **Build command:** `npm install && npm run build`
+- **Publish directory:** `dist`
 
 ## License
 

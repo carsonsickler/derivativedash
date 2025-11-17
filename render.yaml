@@ -1,12 +1,6 @@
 services:
-  - type: web
+  - type: static
     name: derivation-dash
-    env: node
-    buildCommand: npm install && npm run build:web
-    startCommand: npm start
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: PORT
-        generateValue: true
+    buildCommand: npm install && npm run build
+    publishPath: dist
 

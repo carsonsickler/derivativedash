@@ -1,110 +1,52 @@
-# Deployment Checklist
+# Deployment Checklist (Web)
 
-## Mobile Optimizations Completed ✅
+## Build Targets
 
-### 1. **Keyboard Handling**
-- ✅ Added `KeyboardAvoidingView` for iOS and Android
-- ✅ Configured `keyboardShouldPersistTaps="handled"` for better UX
-- ✅ Platform-specific keyboard behavior
+- ✅ Single-page React app
+- ✅ Pure client-side rendering (no server needed)
+- ✅ Optimized CSS + minimal bundles
 
-### 2. **Touch Targets**
-- ✅ All buttons meet minimum 44x44pt (iOS) / 48dp (Android) requirements
-- ✅ Added `hitSlop` to back button for easier tapping
-- ✅ Added `activeOpacity` for visual touch feedback
+## Pre-Deployment Testing
 
-### 3. **Responsive Design**
-- ✅ Screen size detection for small devices (< 375px width)
-- ✅ Adaptive font sizes for small screens
-- ✅ Flexible button layouts that wrap on small screens
-- ✅ Responsive padding and margins
-
-### 4. **Performance**
-- ✅ Used `useCallback` for memoized functions
-- ✅ Optimized re-renders
-- ✅ Efficient state management
-
-### 5. **Input Optimizations**
-- ✅ Disabled auto-correct for word inputs
-- ✅ Added clear button on iOS
-- ✅ Proper text content types
-- ✅ Better placeholder handling
-
-### 6. **UI/UX Improvements**
-- ✅ Better spacing for mobile screens
-- ✅ Improved button wrapping on small screens
-- ✅ Enhanced scroll behavior
-- ✅ Visual feedback on all interactive elements
-
-## Pre-Deployment Steps
-
-1. **Test on Real Devices**
+1. **Run tests manually**
    ```bash
-   # iOS
-   npm run ios
-   
-   # Android
-   npm run android
-   
-   # Web
-   npm run web
+   npm run dev
+   ```
+   - Verify all levels load
+   - Confirm hint + Enter-to-submit functionality
+   - Ensure layout works on mobile breakpoints
+
+2. **Production build & preview**
+   ```bash
+   npm run build
+   npm run preview
    ```
 
-2. **Build for Production**
-   ```bash
-   # For Expo
-   expo build:ios
-   expo build:android
-   
-   # Or use EAS Build
-   eas build --platform ios
-   eas build --platform android
-   ```
+## Render Deployment
 
-3. **Check Dependencies**
-   - All dependencies are installed
-   - No security vulnerabilities (run `npm audit`)
-   - `.npmrc` configured for legacy peer deps
+- **Service Type:** Static Site
+- **Build Command:** `npm install && npm run build`
+- **Publish Directory:** `dist`
 
-4. **Environment Variables**
-   - No sensitive data in code
-   - All configs in `app.json` are correct
-
-5. **Assets**
-   - Optional assets removed from `app.json` (will use defaults)
-   - Can add custom icons later if needed
-
-## Known Optimizations
-
-- ✅ SafeAreaView for notch/status bar handling
-- ✅ Platform-specific code where needed
-- ✅ Responsive grid layouts
-- ✅ Touch-friendly button sizes
-- ✅ Keyboard-aware scrolling
-
-## Testing Checklist
-
-- [ ] Test on iPhone (various sizes)
-- [ ] Test on Android (various sizes)
-- [ ] Test keyboard behavior
-- [ ] Test button interactions
-- [ ] Test hint functionality
-- [ ] Test Enter key submission
-- [ ] Test back button navigation
-- [ ] Test difficulty selection
-- [ ] Test all three difficulty levels
-- [ ] Test on tablet (if supported)
+See `render.yaml` for an example configuration.
 
 ## Performance Notes
 
-- Word families data is static (no API calls)
-- No heavy computations
-- Efficient state updates
-- Optimized re-renders with useCallback
+- No API calls (all data local)
+- State updates limited to 4 inputs + metadata
+- Pure React 18 + Vite (fast dev/build)
+- CSS optimized for mobile + desktop
 
-## Browser/Web Compatibility
+## Post-Deploy Checklist
 
-- Works on modern browsers
-- Responsive web design
-- Touch and mouse support
-- Keyboard navigation support
+- [ ] Test on desktop browsers (Chrome, Safari, Edge)
+- [ ] Test on at least one mobile browser
+- [ ] Validate hint + reset + next buttons
+- [ ] Confirm SPA routing (all 200 from static host)
+
+## Troubleshooting
+
+- If deployment fails, ensure Node >= 18 locally
+- Delete `node_modules` / reinstall if build errors occur
+- Clear Render cache if old artifacts persist
 

@@ -1,6 +1,3 @@
-// Word families organized by difficulty level
-// Each family contains: noun, verb, adjective, adverb
-
 export const WORD_FAMILIES = {
   level1: [
     {
@@ -202,38 +199,21 @@ export const WORD_FAMILIES = {
   ]
 };
 
-// Helper function to get all valid derivations for a word family
-export function getAllDerivations(family) {
-  return {
-    nouns: [family.noun],
-    verbs: [family.verb],
-    adjectives: [family.adjective],
-    adverbs: [family.adverb]
-  };
-}
-
-// Helper function to check if a word is related to the root
 export function isRelatedWord(word, family) {
   const normalizedWord = word.toUpperCase().trim();
   const root = family.root.toUpperCase();
-  
-  // Check if word contains the root
+
   if (normalizedWord.includes(root) || root.includes(normalizedWord.substring(0, root.length))) {
     return true;
   }
-  
-  // Check all family members
+
   const familyWords = [
     family.noun,
     family.verb,
     family.adjective,
     family.adverb
-  ].map(w => w.toUpperCase());
-  
-  return familyWords.some(fw => 
-    normalizedWord === fw || 
-    fw.includes(normalizedWord) ||
-    normalizedWord.includes(fw.substring(0, Math.min(normalizedWord.length, fw.length)))
-  );
+  ].map((w) => w.toUpperCase());
+
+  return familyWords.some((fw) => normalizedWord === fw || fw.includes(normalizedWord));
 }
 
